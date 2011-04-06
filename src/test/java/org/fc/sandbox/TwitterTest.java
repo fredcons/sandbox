@@ -2,13 +2,9 @@ package org.fc.sandbox;
 
 import org.testng.annotations.Test;
 
-import twitter4j.AccountSettings;
 import twitter4j.IDs;
-import twitter4j.Query;
-import twitter4j.QueryResult;
 import twitter4j.ResponseList;
 import twitter4j.Status;
-import twitter4j.Tweet;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.User;
@@ -19,12 +15,22 @@ public class TwitterTest {
 	@Test
 	public void testSettings() {
 		try {
+		    String oAuthConsumerKey = System.getProperty("oauth.consumer.key");
+		    String oAuthConsumerSecret = System.getProperty("oauth.consumer.secret");
+		    String oAuthAccessToken = System.getProperty("oauth.access.token");
+		    String oAuthAccessTokenSecret = System.getProperty("oauth.access.token.secret");
+		    
+		    System.out.println("oAuthConsumerKey       : " + oAuthConsumerKey);
+		    System.out.println("oAuthConsumerSecret    : " + oAuthConsumerSecret);
+		    System.out.println("oAuthAccessToken       : " + oAuthAccessToken);
+		    System.out.println("oAuthAccessTokenSecret : " + oAuthAccessTokenSecret);
+		    
 			ConfigurationBuilder cb = new ConfigurationBuilder();
 			cb.setDebugEnabled(true)
-			  .setOAuthConsumerKey("VHEZ29G6E6QnV99YXyi5Ew")
-			  .setOAuthConsumerSecret("9xcqNjcKkn3JCcuwlpTS7NOH6pmEUJ1BkcfmgyH1vjM")
-			  .setOAuthAccessToken("251591990-RMpfKLSAYWdpt8I4fdMW2aLm3cvWjpn2yEDBcvKz")
-			  .setOAuthAccessTokenSecret("aB7WbOkrijW4bNPH4LeOkqbL3jyA6ydMrPbK74YYQ");
+			  .setOAuthConsumerKey(oAuthConsumerKey)
+			  .setOAuthConsumerSecret(oAuthConsumerSecret)
+			  .setOAuthAccessToken(oAuthAccessToken)
+			  .setOAuthAccessTokenSecret(oAuthAccessTokenSecret);
 			
 			TwitterFactory tf = new TwitterFactory(cb.build());
 			Twitter twitter = tf.getInstance();			

@@ -8,7 +8,9 @@ public class Main {
 	
 	public static void main(String[] args) {
 		try {
-			Twitter tw = new TwitterFactory().getInstance("fredcons", "hongkong");
+		    String login = args[0];
+		    String password = args[1];
+			Twitter tw = new TwitterFactory().getInstance(login, password);
 			AccountSettings settings = tw.getAccountSettings();
 			System.out.println(settings);
 		} catch (Exception e) {
